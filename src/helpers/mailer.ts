@@ -11,7 +11,7 @@ var transport = nodemailer.createTransport({
               
             }
           });
-export const sendEmail=async({email,emailType,userId}:any)=>{
+export const sendEmail=async()=>{
     try{
         // console.log(email+emailType+userId);
     //     //create a hashed token
