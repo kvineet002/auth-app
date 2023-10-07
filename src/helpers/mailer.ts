@@ -24,13 +24,13 @@ export const sendEmail=async({email,emailType,userId}:any)=>{
 
     //     }
         
-          const mailOptions={
-            from: '',
-            to:'kuku',
-            subject:"Verify your email",
-            html:`<p>Click to ${"Verify your email"}</p>`
+        //   const mailOptions={
+        //     from: '',
+        //     to:'kuku',
+        //     subject:"Verify your email",
+        //     html:`<p>Click to ${"Verify your email"}</p>`
 
-          }
+        //   }
          await transport.sendMail({
             from: 'Kobra@mail', 
             to: "bar@example.com", // list of receivers
