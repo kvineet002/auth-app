@@ -33,7 +33,7 @@ export async function POST(request:NextRequest) {
         //send verification email
 
         
-        await sendEmail();
+        // await sendEmail();
         return NextResponse.json({
             message:"user created successfully",
             success:true,
