@@ -13,10 +13,7 @@ export default function Home() {
 
   const prfpage= async () =>{
     try {
-      const res = await axios.get('/api/users/me');
-      console.log(res.data);
-      setdata(res.data.data.username);
-      router.push(`/profile/${data}`);
+      router.push(`/profile`);
   } catch (error:any) {
     
   }
