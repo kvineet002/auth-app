@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 import axios from 'axios'
+import Link from "next/link";
    
 export default function Profile({params}:any){
      const router=useRouter();
@@ -21,7 +22,7 @@ export default function Profile({params}:any){
     }
     return(
         <div className="flex flex-col items-center justify-center">
-        <h1 className="mt-9 text-lg  bg-lime-400 text-black p-4 rounded-3xl pt-2 pb-2 font-bold">KobRa.
+        <h1  className="mt-9 text-lg  bg-lime-400 text-black p-4 rounded-3xl pt-2 pb-2 font-bold"><Link href='/'>KobRa.</Link>
             </h1>
         <h1 className="m-5 font-bold text-xl">Profile Page
         </h1>

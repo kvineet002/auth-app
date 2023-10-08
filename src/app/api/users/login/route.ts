@@ -8,8 +8,8 @@ connect()
 export async function POST(request:NextRequest) {
     try{
         const reqBody=await request.json()
-        const {email,password}=reqBody;
-        console.log(reqBody);
+        const {email,password,isVerified}=reqBody;
+        console.log("hello world"+reqBody);
         //check if user exists
         const user=await User.findOne({email})
         if(!user){
@@ -17,6 +17,13 @@ export async function POST(request:NextRequest) {
                 error:"user does not exist"            
             },{status:400})
         }
+        
+        if(!user.isVerified){
+            return NextResponse.json({
+                error:"user is not verified"            
+            },{status:400})
+        }
+        // const verify=await 
         //check if password is correct
         const validPassword=await bcryptjs.compare
         (password,user.password)
@@ -35,6 +42,7 @@ export async function POST(request:NextRequest) {
     
     const response=NextResponse.json({
         username:user.username,
+        isVerified:user.isVerified,
         message:"login successfull",
         success:true,
     })

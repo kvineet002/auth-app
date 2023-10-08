@@ -11,34 +11,28 @@ var transport = nodemailer.createTransport({
               
             }
           });
-export const sendEmail=async()=>{
+export const sendEmail=async({emai,emailTyp,userI}:any)=>{
     try{
-        // console.log(email+emailType+userId);
-    //     //create a hashed token
-    //    const hashedToken=await bcryptjs.hash(userId.toSting(),10);
+        //  console.log(emai+emailTyp+userI);
+        // create a hashed token
+       const hashedToken=await bcryptjs.hash(userI.toString(),10);
 
-    //   if(emailType==="VERIFY")
-    //    {await User.findByIdAndUpdate(userId,{verifyToken:hashedToken,verifyTokenExpiry:Date.now()+3600000});}
-    //     else if(emailType==="RESET"){
-    //    await User.findByIdAndUpdate(userId,{forgotPasswordToken:hashedToken,forgotPasswordTokenExpiry:Date.now()+3600000});
+      if(emailTyp==="VERIFY")
+       {await User.findByIdAndUpdate(userI,{verifyToken:hashedToken,verifyTokenExpiry:Date.now()+3600000});}
+        else if(emailTyp==="RESET"){
+       await User.findByIdAndUpdate(userI,{forgotPasswordToken:hashedToken,forgotPasswordTokenExpiry:Date.now()+3600000});
 
-    //     }
-        
-        //   const mailOptions={
-        //     from: '',
-        //     to:'kuku',
-        //     subject:"Verify your email",
-        //     html:`<p>Click to ${"Verify your email"}</p>`
-
-        //   }
-         await transport.sendMail({
+        }
+          const mailOptions={
             from: 'Kobra@mail', 
-            to: "bar@example.com", // list of receivers
-            subject: "Verify Your Email", // plain text body
+            to: emai,
+            subject: emailTyp==="VERIFY"? "Verify Your Email":"Reset Your Password", 
             html: `<h1  className="mt-9 text-lg  bg-lime-400 text-black p-4 rounded-3xl pt-2 pb-2 font-bold">KobRa.
             </h1>
-            <b>Click to ${"Verify your email"}</b>`, // html body
-          });
+            <p>Click <a href="${process.env.DOMAIN}/verifyemail?token=${hashedToken}">here</a> to ${emailTyp==="VERIFY"?"Verify your email":"Reset Your password"} </p>`, 
+          };
+
+         await transport.sendMail(mailOptions);
         
     }
     catch(error:any){

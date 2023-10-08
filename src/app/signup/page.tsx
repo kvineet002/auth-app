@@ -27,7 +27,7 @@ export default function SignUpPage(){
             setloading(true);
            const responce= await axios.post("/api/users/signup",user);
             console.log("SignUp success",responce.data)
-            router.push("/login");
+            router.push("/verifyemail");
         }
         catch(error:any)
         {
@@ -47,7 +47,7 @@ person
 </span>
         <label className="mt-4 text-sm text-gray-300 font-mono" htmlFor="username">Username</label>
         <input
-        className="text-black pl-4 placeholder:text-white border  border-slate-400 opacity-20  placeholder:text-sm hover:bg-slate-100 hover:opacity-30 hover:placeholder:text-black hover:border-gray-50  bg-transparent  outline-none mb-3 p-2 w-[24rem] mt-1 rounded-md"
+        className="text-white  focus:text-black pl-4 placeholder:text-white border  border-slate-400 opacity-20  placeholder:text-sm hover:bg-slate-100 hover:opacity-30 hover:placeholder:text-black hover:border-gray-50  bg-transparent  outline-none mb-3 p-2 w-[24rem] mt-1 rounded-md"
         id="username"
         type="text"
         value={user.username}
@@ -59,9 +59,9 @@ email
 </span>
         <label className="mt-4 text-sm text-gray-300 font-mono" htmlFor="email">Email</label>
         <input
-        className="text-black pl-4 placeholder:text-white border  border-slate-400 opacity-20  placeholder:text-sm hover:bg-slate-100 hover:opacity-30 hover:placeholder:text-black hover:border-gray-50  bg-transparent  outline-none mb-3 p-2 w-[24rem] mt-1 rounded-md"
+        className="text-white  focus:text-black pl-4 placeholder:text-white border  border-slate-400 opacity-20  placeholder:text-sm  hover:bg-slate-100 hover:opacity-30 hover:placeholder:text-black hover:border-gray-50  bg-transparent  outline-none mb-3 p-2 w-[24rem] mt-1 rounded-md"
         id="email"
-        type="text"
+        type="email"
         value={user.email}
         onChange={(inp)=>setuser({...user,email:inp.target.value})}
         placeholder="Enter Email"
@@ -71,9 +71,9 @@ lock
 </span>
         <label className="mt-4 text-sm text-gray-300 font-mono" htmlFor="password">Password</label>
         <input
-        className="text-black pl-4 placeholder:text-white border  border-slate-400 opacity-20  placeholder:text-sm hover:bg-slate-100 hover:opacity-30 hover:placeholder:text-black hover:border-gray-50  bg-transparent  outline-none mb-3 p-2 w-[24rem] mt-1 rounded-md"
+        className="text-white  focus:text-black pl-4 placeholder:text-white border  border-slate-400 opacity-20  placeholder:text-sm hover:bg-slate-100 hover:opacity-30 hover:placeholder:text-black hover:border-gray-50  bg-transparent  outline-none mb-3 p-2 w-[24rem] mt-1 rounded-md"
         id="password"
-        type="text"
+        type="password"
         value={user.password}
         onChange={(inp)=>setuser({...user,password:inp.target.value})}
         placeholder="Enter Password"
@@ -83,6 +83,8 @@ lock
         </button>
         <Link className="mt-5 -mb-3 text-xs text-lime-200 underline font-bold"  href='/login'>Visit Login Page</Link>
        </div>
+      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]"></div>
+
         </div>
     )
 }
