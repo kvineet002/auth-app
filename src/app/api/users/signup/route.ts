@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 import nodemailer from 'nodemailer';
 import { sendEmail } from "@/helpers/mailer";
 connect()
-export async function POST(request:NextRequest) {
+export async function POST(request: NextRequest, response: NextResponse): Promise<void | Response> {
     try{
         const reqBody=await request.json()
         const {username,email,password} =reqBody;
@@ -38,6 +38,7 @@ export async function POST(request:NextRequest) {
             success:true,
             savedUser
         })
+        
     }
     
     
