@@ -43,7 +43,6 @@ export async function POST(request: NextRequest, response: NextResponse): Promis
     
     
     catch(error:any){
-        return NextResponse.json({error:error.message}),
-        {status:500}
+        return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
